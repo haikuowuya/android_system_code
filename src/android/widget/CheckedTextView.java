@@ -39,10 +39,14 @@ import android.view.accessibility.AccessibilityNodeInfo;
  * @attr ref android.R.styleable#CheckedTextView_checkMark
  */
 public class CheckedTextView extends TextView implements Checkable {
+	/**是否被选中标志*/
     private boolean mChecked;
+    /**右边复选框的图标资源id*/
     private int mCheckMarkResource;
+    /**右边复选框的图标资源*/
     private Drawable mCheckMarkDrawable;
     private int mBasePadding;
+    /**右边复选框的图标宽度*/
     private int mCheckMarkWidth;
     private boolean mNeedRequestlayout;
 
