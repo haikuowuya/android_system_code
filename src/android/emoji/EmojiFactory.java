@@ -51,6 +51,7 @@ public final class EmojiFactory {
         protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
             return size() > sCacheSize;
         }
+    
     }
     
     // A pointer to native EmojiFactory object.

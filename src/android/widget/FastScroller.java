@@ -33,7 +33,7 @@ import android.view.ViewConfiguration;
 import android.widget.AbsListView.OnScrollListener;
 
 /**
- * Helper class for AbsListView to draw and control the Fast Scroll thumb
+ * AbsListView扩展功能之快速滑动的辅助类
  */
 class FastScroller {
     private static final String TAG = "FastScroller";
