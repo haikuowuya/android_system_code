@@ -48,7 +48,8 @@ import java.util.ArrayList;
 
 /**
  * Startup class for the zygote process.
- *
+ * zygote服务从app_process开始启动后，会先执行一个Dalvik虚拟机，虚拟机执行的第一个java类就是 ZygoteInit.java, 
+ * 在main函数中启动一个socket服务端口， 用于接受启动新进程的	命令。在registerZygoteSocket静态方法中完成的。
  * Pre-initializes some classes, and then waits for commands on a UNIX domain
  * socket. Based on these commands, forks off child processes that inherit
  * the initial state of the VM.
@@ -518,7 +519,7 @@ public class ZygoteInit {
         return true;
     }
 
-    public static void main(String argv[]) {
+    public static void main(String argv[]) {//TODO  main
         try {
             // Start profiling the zygote initialization.
             SamplingProfilerIntegration.start();

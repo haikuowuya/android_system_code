@@ -18,6 +18,8 @@ package android.drm.mobile1;
 
 import java.util.Date;
 
+import android.widget.PopupWindow;
+
 /**
  * This class provides interfaces to access the DRM constraint.
  */

@@ -20,6 +20,7 @@ import com.android.ide.common.rendering.api.IAnimationListener;
 import com.android.ide.common.rendering.api.RenderSession;
 import com.android.ide.common.rendering.api.Result;
 import com.android.ide.common.rendering.api.Result.Status;
+import com.android.internal.os.ZygoteInit;
 import com.android.layoutlib.bridge.Bridge;
 import com.android.layoutlib.bridge.impl.RenderSessionImpl;
 

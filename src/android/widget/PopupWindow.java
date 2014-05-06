@@ -33,6 +33,7 @@ import java.lang.ref.WeakReference;
  * @see android.widget.Spinner
  */
 public class PopupWindow {
+	View 
     /**
      * Mode for {@link #setInputMethodMode(int)}: the requirements for the
      * input method should be based on the focusability of the popup.  That is

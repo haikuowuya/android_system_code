@@ -4339,7 +4339,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	/**
 	 * Call this view's OnLongClickListener, if it is defined. Invokes the
 	 * context menu if the OnLongClickListener did not consume the event.
-	 * 
+	 * 调用View的长按事件， 如果已经没有处理弹出上下文菜单
 	 * @return True if one of the above receivers consumed the event, false
 	 *         otherwise.
 	 */
