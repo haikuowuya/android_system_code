@@ -27,6 +27,7 @@ import android.net.LocalServerSocket;
 import android.os.Debug;
 import android.os.Process;
 import android.os.SystemClock;
+import android.os.SystemService;
 import android.util.EventLog;
 import android.util.Log;
 
@@ -45,6 +46,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+
+import com.android.server.SystemServer;
 
 /**
  * Startup class for the zygote process.
@@ -152,14 +155,14 @@ public class ZygoteInit {
 
     /**
      * Registers a server socket for zygote command connections
-     *
+     *  注册一个用于接受zygote命令的服务端口
      * @throws RuntimeException when open fails
      */
     private static void registerZygoteSocket() {
         if (sServerSocket == null) {
             int fileDesc;
             try {
-                String env = System.getenv(ANDROID_SOCKET_ENV);
+                String env = System.getenv(ANDROID_SOCKET_ENV);//结果为10
                 fileDesc = Integer.parseInt(env);
             } catch (RuntimeException ex) {
                 throw new RuntimeException(
@@ -471,8 +474,8 @@ public class ZygoteInit {
              */
             RuntimeInit.zygoteInit(parsedArgs.targetSdkVersion, parsedArgs.remainingArgs);
         }
-
         /* should never reach here */
+  
     }
 
     /**

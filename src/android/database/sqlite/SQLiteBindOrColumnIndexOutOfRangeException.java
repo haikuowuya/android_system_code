@@ -16,6 +16,8 @@
 
 package android.database.sqlite;
 
+import com.android.internal.os.ZygoteInit;
+
 /**
  * Thrown if the the bind or column parameter index is out of range
  */
@@ -24,5 +26,6 @@ public class SQLiteBindOrColumnIndexOutOfRangeException extends SQLiteException 
 
     public SQLiteBindOrColumnIndexOutOfRangeException(String error) {
         super(error);
+     
     }
 }
