@@ -115,7 +115,6 @@ public final class ViewRootImpl implements ViewParent,
      * at 60 Hz. This can be used to measure the potential framerate.
      */
     private static final String PROPERTY_PROFILE_RENDERING = "viewancestor.profile_rendering";    
-    
     private static final boolean MEASURE_LATENCY = false;
     private static LatencyTimer lt;
 
@@ -150,7 +149,7 @@ public final class ViewRootImpl implements ViewParent,
     int mLastJoystickYKeyCode;
 
     final int[] mTmpLocation = new int[2];
-
+   
     final TypedValue mTmpValue = new TypedValue();
     
     final InputMethodCallback mInputMethodCallback;
@@ -2016,6 +2015,7 @@ public final class ViewRootImpl implements ViewParent,
             mFpsStartTime = mFpsPrevTime = nowTime;
             mFpsNumFrames = 0;
         } else {
+        	
             ++mFpsNumFrames;
             String thisHash = Integer.toHexString(System.identityHashCode(this));
             long frameTime = nowTime - mFpsPrevTime;

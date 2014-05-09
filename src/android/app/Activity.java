@@ -2398,7 +2398,7 @@ public class Activity extends ContextThemeWrapper
      * intercept all touch screen events before they are dispatched to the
      * window.  Be sure to call this implementation for touch screen events
      * that should be handled normally.
-     * 
+     *  用户触摸屏幕/按下按键时，可以进行一些预处理操作
      * @param ev The touch screen event.
      * 
      * @return boolean Return true if this event was consumed.

@@ -1894,7 +1894,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             }
             return false;
         }
-
+        //TODO View 的触摸事件首先回调到根View 进行派发
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
             final Callback cb = getCallback();
