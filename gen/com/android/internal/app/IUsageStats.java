@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\android_workspace\\system_code\\src\\com\\android\\internal\\app\\IUsageStats.aidl
+ * Original file: E:\\android_workspace2\\system_code\\src\\com\\android\\internal\\app\\IUsageStats.aidl
  */
 package com.android.internal.app;
 public interface IUsageStats extends android.os.IInterface
