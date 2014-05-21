@@ -37,7 +37,7 @@ public class WebViewClient {
      * @return True if the host application wants to leave the current WebView
      *         and handle the url itself, otherwise return false.
      */
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    public boolean shouldOverrideUrlLoading(WebMockView view, String url) {
         return false;
     }
 
@@ -53,19 +53,19 @@ public class WebViewClient {
      * @param favicon The favicon for this page if it already exists in the
      *            database.
      */
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+    public void onPageStarted(WebMockView view, String url, Bitmap favicon) {
     }
 
     /**
      * Notify the host application that a page has finished loading. This method
      * is called only for main frame. When onPageFinished() is called, the
      * rendering picture may not be updated yet. To get the notification for the
-     * new Picture, use {@link WebView.PictureListener#onNewPicture}.
+     * new Picture, use {@link WebMockView.PictureListener#onNewPicture}.
      *
      * @param view The WebView that is initiating the callback.
      * @param url The url of the page.
      */
-    public void onPageFinished(WebView view, String url) {
+    public void onPageFinished(WebMockView view, String url) {
     }
 
     /**
@@ -75,7 +75,7 @@ public class WebViewClient {
      * @param view The WebView that is initiating the callback.
      * @param url The url of the resource the WebView will load.
      */
-    public void onLoadResource(WebView view, String url) {
+    public void onLoadResource(WebMockView view, String url) {
     }
 
     /**
@@ -86,14 +86,14 @@ public class WebViewClient {
      * network thread so clients should exercise caution when accessing private
      * data.
      *
-     * @param view The {@link android.webkit.WebView} that is requesting the
+     * @param view The {@link android.webkit.WebMockView} that is requesting the
      *             resource.
      * @param url The raw url of the resource.
      * @return A {@link android.webkit.WebResourceResponse} containing the
      *         response information or null if the WebView should load the
      *         resource itself.
      */
-    public WebResourceResponse shouldInterceptRequest(WebView view,
+    public WebResourceResponse shouldInterceptRequest(WebMockView view,
             String url) {
         return null;
     }
@@ -111,7 +111,7 @@ public class WebViewClient {
      *             a redirect loop, it will cancel the load.
      */
     @Deprecated
-    public void onTooManyRedirects(WebView view, Message cancelMsg,
+    public void onTooManyRedirects(WebMockView view, Message cancelMsg,
             Message continueMsg) {
         cancelMsg.sendToTarget();
     }
@@ -157,7 +157,7 @@ public class WebViewClient {
      * @param description A String describing the error.
      * @param failingUrl The url that failed to load.
      */
-    public void onReceivedError(WebView view, int errorCode,
+    public void onReceivedError(WebMockView view, int errorCode,
             String description, String failingUrl) {
     }
 
@@ -170,7 +170,7 @@ public class WebViewClient {
      * @param dontResend The message to send if the browser should not resend
      * @param resend The message to send if the browser should resend data
      */
-    public void onFormResubmission(WebView view, Message dontResend,
+    public void onFormResubmission(WebMockView view, Message dontResend,
             Message resend) {
         dontResend.sendToTarget();
     }
@@ -182,7 +182,7 @@ public class WebViewClient {
      * @param url The url being visited.
      * @param isReload True if this url is being reloaded.
      */
-    public void doUpdateVisitedHistory(WebView view, String url,
+    public void doUpdateVisitedHistory(WebMockView view, String url,
             boolean isReload) {
     }
 
@@ -198,7 +198,7 @@ public class WebViewClient {
      *            response.
      * @param error The SSL error object.
      */
-    public void onReceivedSslError(WebView view, SslErrorHandler handler,
+    public void onReceivedSslError(WebMockView view, SslErrorHandler handler,
             SslError error) {
         handler.cancel();
     }
@@ -215,7 +215,7 @@ public class WebViewClient {
      * @param realm the realm for which authentication is required
      * @see Webview#getHttpAuthUsernamePassword
      */
-    public void onReceivedHttpAuthRequest(WebView view,
+    public void onReceivedHttpAuthRequest(WebMockView view,
             HttpAuthHandler handler, String host, String realm) {
         handler.cancel();
     }
@@ -232,7 +232,7 @@ public class WebViewClient {
      * @return True if the host application wants to handle the key event
      *         itself, otherwise return false
      */
-    public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
+    public boolean shouldOverrideKeyEvent(WebMockView view, KeyEvent event) {
         return false;
     }
 
@@ -246,7 +246,7 @@ public class WebViewClient {
      * @param view The WebView that is initiating the callback.
      * @param event The key event.
      */
-    public void onUnhandledKeyEvent(WebView view, KeyEvent event) {
+    public void onUnhandledKeyEvent(WebMockView view, KeyEvent event) {
         ViewRootImpl root = view.getViewRootImpl();
         if (root != null) {
             root.dispatchUnhandledKey(event);
@@ -261,7 +261,7 @@ public class WebViewClient {
      * @param oldScale The old scale factor
      * @param newScale The new scale factor
      */
-    public void onScaleChanged(WebView view, float oldScale, float newScale) {
+    public void onScaleChanged(WebMockView view, float oldScale, float newScale) {
     }
 
     /**
@@ -274,7 +274,7 @@ public class WebViewClient {
      *                account, it should be used to log in the user.
      * @param args Authenticator specific arguments used to log in the user.
      */
-    public void onReceivedLoginRequest(WebView view, String realm,
+    public void onReceivedLoginRequest(WebMockView view, String realm,
             String account, String args) {
     }
 }

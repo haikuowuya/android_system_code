@@ -19,7 +19,7 @@ package android.webkit;
 import android.net.WebAddress;
 
 /**
- * Manages the cookies used by an application's {@link WebView} instances.
+ * Manages the cookies used by an application's {@link WebMockView} instances.
  * Cookies are manipulated according to RFC2109.
  */
 public class CookieManager {
@@ -36,7 +36,7 @@ public class CookieManager {
 
     /**
      * Gets the singleton CookieManager instance. If this method is used
-     * before the application instantiates a {@link WebView} instance,
+     * before the application instantiates a {@link WebMockView} instance,
      * {@link CookieSyncManager#createInstance CookieSyncManager.createInstance(Context)}
      * must be called first.
      *
@@ -47,10 +47,10 @@ public class CookieManager {
     }
 
     /**
-     * Sets whether the application's {@link WebView} instances should send and
+     * Sets whether the application's {@link WebMockView} instances should send and
      * accept cookies.
      *
-     * @param accept whether {@link WebView} instances should send and accept
+     * @param accept whether {@link WebMockView} instances should send and accept
      *               cookies
      */
     public synchronized void setAcceptCookie(boolean accept) {
@@ -58,10 +58,10 @@ public class CookieManager {
     }
 
     /**
-     * Gets whether the application's {@link WebView} instances send and accept
+     * Gets whether the application's {@link WebMockView} instances send and accept
      * cookies.
      *
-     * @return true if {@link WebView} instances send and accept cookies
+     * @return true if {@link WebMockView} instances send and accept cookies
      */
     public synchronized boolean acceptCookie() {
         throw new MustOverrideException();
@@ -169,10 +169,10 @@ public class CookieManager {
     }
 
     /**
-     * Gets whether the application's {@link WebView} instances send and accept
+     * Gets whether the application's {@link WebMockView} instances send and accept
      * cookies for file scheme URLs.
      *
-     * @return true if {@link WebView} instances send and accept cookies for
+     * @return true if {@link WebMockView} instances send and accept cookies for
      *         file scheme URLs
      */
     // Static for backward compatibility.
@@ -190,14 +190,14 @@ public class CookieManager {
     }
 
     /**
-     * Sets whether the application's {@link WebView} instances should send and
+     * Sets whether the application's {@link WebMockView} instances should send and
      * accept cookies for file scheme URLs.
      * Use of cookies with file scheme URLs is potentially insecure. Do not use
      * this feature unless you can be sure that no unintentional sharing of
      * cookie data can take place.
      * <p>
      * Note that calls to this method will have no effect if made after a
-     * {@link WebView} or CookieManager instance has been created.
+     * {@link WebMockView} or CookieManager instance has been created.
      */
     // Static for backward compatibility.
     public static void setAcceptFileSchemeCookies(boolean accept) {

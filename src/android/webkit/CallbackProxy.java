@@ -1247,7 +1247,7 @@ class CallbackProxy extends Handler {
             return null;
         }
 
-        WebView.WebViewTransport transport =
+        WebMockView.WebViewTransport transport =
             mWebView.getWebView().new WebViewTransport();
         final Message msg = obtainMessage(NOTIFY);
         msg.obj = transport;

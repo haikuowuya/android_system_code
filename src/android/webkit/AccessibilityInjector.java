@@ -60,7 +60,7 @@ class AccessibilityInjector {
     private final Context mContext;
 
     // Cached reference to mWebViewClassic.getWebView(), for convenience.
-    private final WebView mWebView;
+    private final WebMockView mWebView;
 
     // The Java objects that are exposed to JavaScript.
     private TextToSpeechWrapper mTextToSpeech;
@@ -570,7 +570,7 @@ class AccessibilityInjector {
     }
 
     /**
-     * @return {@code true} if JavaScript is enabled in the {@link WebView}
+     * @return {@code true} if JavaScript is enabled in the {@link WebMockView}
      *         settings.
      */
     private boolean isJavaScriptEnabled() {
@@ -821,7 +821,7 @@ class AccessibilityInjector {
          * @param code JavaScript code that evaluates to a result.
          * @return The result of the action, or false if it timed out.
          */
-        private boolean performAction(WebView webView, String code) {
+        private boolean performAction(WebMockView webView, String code) {
             final int resultId = mResultIdCounter.getAndIncrement();
             final String url = String.format(
                     JAVASCRIPT_ACTION_TEMPLATE, mInterfaceName, resultId, code);
@@ -952,7 +952,7 @@ class AccessibilityInjector {
          * @param webView The web view to request a callback from.
          * @param callbackRunnable Runnable to execute if a callback is received.
          */
-        public void requestCallback(WebView webView, Runnable callbackRunnable) {
+        public void requestCallback(WebMockView webView, Runnable callbackRunnable) {
             mCallbackRunnable = callbackRunnable;
 
             webView.loadUrl("javascript:(function() { " + mInterfaceName + ".callback(); })();");

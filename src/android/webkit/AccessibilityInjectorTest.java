@@ -33,7 +33,7 @@ import android.view.accessibility.AccessibilityManager;
 
 /**
  * This is a test for the behavior of the {@link AccessibilityInjector}
- * which is used by {@link WebView} to provide basic accessibility support
+ * which is used by {@link WebMockView} to provide basic accessibility support
  * in case JavaScript is disabled.
  * </p>
  * Note: This test works against the generated {@link AccessibilityEvent}s
@@ -91,8 +91,8 @@ public class AccessibilityInjectorTest
     /** Worker thread with a handler to perform non test thread processing. */
     private Worker mWorker;
 
-    /** Handle to the {@link WebView} to load data in. */
-    private WebView mWebView;
+    /** Handle to the {@link WebMockView} to load data in. */
+    private WebMockView mWebView;
 
     /** Used for caching the default bindings so they can be restored. */
     private static String sDefaultKeyBindings;
@@ -154,7 +154,7 @@ public class AccessibilityInjectorTest
                "</body>" +
              "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to word
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, META_STATE_ALT_LEFT_ON);
@@ -249,7 +249,7 @@ public class AccessibilityInjectorTest
                "</body>" +
              "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to word
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, META_STATE_ALT_LEFT_ON);
@@ -376,7 +376,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // Sentence axis is the default
 
@@ -479,7 +479,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to heading
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_RIGHT, META_STATE_ALT_LEFT_ON);
@@ -567,7 +567,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to heading
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_RIGHT, META_STATE_ALT_LEFT_ON);
@@ -639,7 +639,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to document
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_LEFT, META_STATE_ALT_LEFT_ON);
@@ -697,7 +697,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to document
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_LEFT, META_STATE_ALT_LEFT_ON);
@@ -741,7 +741,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to word
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, META_STATE_ALT_LEFT_ON);
@@ -800,7 +800,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -863,7 +863,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -939,7 +939,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -999,7 +999,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to word
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, META_STATE_ALT_LEFT_ON);
@@ -1055,7 +1055,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // change navigation axis to word
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, META_STATE_ALT_LEFT_ON);
@@ -1115,7 +1115,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1187,7 +1187,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1258,7 +1258,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1337,7 +1337,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1409,7 +1409,7 @@ public class AccessibilityInjectorTest
               "</body>" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1496,7 +1496,7 @@ public class AccessibilityInjectorTest
               "Second" +
             "</html>";
 
-        WebView webView = loadHTML(html);
+        WebMockView webView = loadHTML(html);
 
         // go to the first sentence
         sendKeyEvent(webView, KeyEvent.KEYCODE_DPAD_DOWN, 0);
@@ -1644,29 +1644,29 @@ public class AccessibilityInjectorTest
     }
 
     /**
-     * Sends a {@link KeyEvent} (up and down) to the {@link WebView}.
+     * Sends a {@link KeyEvent} (up and down) to the {@link WebMockView}.
      *
      * @param keyCode The event key code.
      */
-    private void sendKeyEvent(WebView webView, int keyCode, int metaState) {
+    private void sendKeyEvent(WebMockView webView, int keyCode, int metaState) {
         webView.onKeyDown(keyCode, new KeyEvent(0, 0, KeyEvent.ACTION_DOWN, keyCode, 1, metaState));
         webView.onKeyUp(keyCode, new KeyEvent(0, 0, KeyEvent.ACTION_UP, keyCode, 1, metaState));
     }
 
     /**
-     * Loads HTML content in a {@link WebView}.
+     * Loads HTML content in a {@link WebMockView}.
      *
      * @param html The HTML content;
-     * @return The {@link WebView} view.
+     * @return The {@link WebMockView} view.
      */
-    private WebView loadHTML(final String html) {
+    private WebMockView loadHTML(final String html) {
         mWorker.getHandler().post(new Runnable() {
             public void run() {
                 if (mWebView == null) {
                     mWebView = getActivity().getWebView();
                     mWebView.setWebViewClient(new WebViewClient() {
                         @Override
-                        public void onPageFinished(WebView view, String url) {
+                        public void onPageFinished(WebMockView view, String url) {
                             mWorker.getHandler().post(new Runnable() {
                                 public void run() {
                                     synchronized (sTestLock) {
@@ -1712,7 +1712,7 @@ public class AccessibilityInjectorTest
     }
 
     /**
-     * This is a worker thread responsible for creating the {@link WebView}.
+     * This is a worker thread responsible for creating the {@link WebMockView}.
      */
     private class Worker implements Runnable {
         private final Object mWorkerLock = new Object();
@@ -1751,7 +1751,7 @@ public class AccessibilityInjectorTest
 
     /**
      * Mock accessibility service to receive the accessibility events
-     * with the current {@link WebView} selection.
+     * with the current {@link WebMockView} selection.
      */
     public static class MockAccessibilityService extends AccessibilityService {
         private boolean mIsServiceInfoSet;

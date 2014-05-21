@@ -55,7 +55,7 @@ public class HttpAuthHandler extends Handler {
     /**
      * Instructs the WebView to proceed with the authentication with the given
      * credentials. Credentials for use with this method can be retrieved from
-     * the WebView's store using {@link WebView#getHttpAuthUsernamePassword}.
+     * the WebView's store using {@link WebMockView#getHttpAuthUsernamePassword}.
      */
     public void proceed(String username, String password) {
     }

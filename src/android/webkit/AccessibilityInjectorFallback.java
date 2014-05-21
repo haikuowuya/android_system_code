@@ -97,7 +97,7 @@ class AccessibilityInjectorFallback {
 
     // handle to the WebViewClassic this injector is associated with.
     private final WebViewClassic mWebView;
-    private final WebView mWebViewInternal;
+    private final WebMockView mWebViewInternal;
 
     // events scheduled for sending as soon as we receive the selected text
     private final Stack<AccessibilityEvent> mScheduledEventStack = new Stack<AccessibilityEvent>();
@@ -291,7 +291,7 @@ class AccessibilityInjectorFallback {
     }
 
     /**
-     * Returns the {@link WebView}-defined direction for the given
+     * Returns the {@link WebMockView}-defined direction for the given
      * {@link AccessibilityNodeInfo}-defined action.
      * 
      * @param action An accessibility action identifier.
@@ -311,7 +311,7 @@ class AccessibilityInjectorFallback {
     }
 
     /**
-     * Returns the {@link WebView}-defined axis for the given
+     * Returns the {@link WebMockView}-defined axis for the given
      * {@link AccessibilityNodeInfo}-defined granularity.
      * 
      * @param granularity An accessibility granularity identifier.

@@ -34,8 +34,8 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.webkit.WebView.HitTestResult;
-import android.webkit.WebView.PictureListener;
+import android.webkit.WebMockView.HitTestResult;
+import android.webkit.WebMockView.PictureListener;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -46,7 +46,7 @@ import java.util.Map;
  * instance; each WebView object is bound to exactly one WebViewProvider object which implements
  * the runtime behavior of that WebView.
  *
- * All methods must behave as per their namesake in {@link WebView}, unless otherwise noted.
+ * All methods must behave as per their namesake in {@link WebMockView}, unless otherwise noted.
  *
  * @hide Not part of the public API; only required by system implementors.
  */
@@ -85,7 +85,7 @@ public interface WebViewProvider {
     public String[] getHttpAuthUsernamePassword(String host, String realm);
 
     /**
-     * See {@link WebView#destroy()}.
+     * See {@link WebMockView#destroy()}.
      * As well as releasing the internal state and resources held by the implementation,
      * the provider should null all references it holds on the WebView proxy class, and ensure
      * no further method calls are made to it.
@@ -193,7 +193,7 @@ public interface WebViewProvider {
 
     public WebBackForwardList copyBackForwardList();
 
-    public void setFindListener(WebView.FindListener listener);
+    public void setFindListener(WebMockView.FindListener listener);
 
     public void findNext(boolean forward);
 
@@ -266,7 +266,7 @@ public interface WebViewProvider {
      * making the call into the provider instance. This is done for convenience in the common case
      * of maintaining backward compatibility. For remaining super class calls (e.g. where the
      * provider may need to only conditionally make the call based on some internal state) see the
-     * {@link WebView.PrivateAccess} callback class.
+     * {@link WebMockView.PrivateAccess} callback class.
      */
     // TODO: See if the pattern of the super-class calls can be rationalized at all, and document
     // the remainder on the methods below.
@@ -348,32 +348,32 @@ public interface WebViewProvider {
         // exists to promote them to public so they may be called by the WebView proxy class.
         // TODO: Combine into ViewDelegate?
         /**
-         * See {@link android.webkit.WebView#computeHorizontalScrollRange}
+         * See {@link android.webkit.WebMockView#computeHorizontalScrollRange}
          */
         public int computeHorizontalScrollRange();
 
         /**
-         * See {@link android.webkit.WebView#computeHorizontalScrollOffset}
+         * See {@link android.webkit.WebMockView#computeHorizontalScrollOffset}
          */
         public int computeHorizontalScrollOffset();
 
         /**
-         * See {@link android.webkit.WebView#computeVerticalScrollRange}
+         * See {@link android.webkit.WebMockView#computeVerticalScrollRange}
          */
         public int computeVerticalScrollRange();
 
         /**
-         * See {@link android.webkit.WebView#computeVerticalScrollOffset}
+         * See {@link android.webkit.WebMockView#computeVerticalScrollOffset}
          */
         public int computeVerticalScrollOffset();
 
         /**
-         * See {@link android.webkit.WebView#computeVerticalScrollExtent}
+         * See {@link android.webkit.WebMockView#computeVerticalScrollExtent}
          */
         public int computeVerticalScrollExtent();
 
         /**
-         * See {@link android.webkit.WebView#computeScroll}
+         * See {@link android.webkit.WebMockView#computeScroll}
          */
         public void computeScroll();
     }

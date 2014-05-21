@@ -32,14 +32,14 @@ public interface WebViewFactoryProvider {
     interface Statics {
         /**
          * Implements the API method:
-         * {@link android.webkit.WebView#findAddress(String)}
+         * {@link android.webkit.WebMockView#findAddress(String)}
          */
         String findAddress(String addr);
 
         /**
          * Implements the API methods:
-         * {@link android.webkit.WebView#enablePlatformNotifications()}
-         * {@link android.webkit.WebView#disablePlatformNotifications()}
+         * {@link android.webkit.WebMockView#enablePlatformNotifications()}
+         * {@link android.webkit.WebMockView#disablePlatformNotifications()}
          */
         void setPlatformNotificationsEnabled(boolean enable);
 
@@ -59,7 +59,7 @@ public interface WebViewFactoryProvider {
      * WebViewProvider.init().
      * @param privateAccess provides access into WebView internal methods.
      */
-    WebViewProvider createWebView(WebView webView, WebView.PrivateAccess privateAccess);
+    WebViewProvider createWebView(WebMockView webView, WebMockView.PrivateAccess privateAccess);
 
     /**
      * Gets the singleton GeolocationPermissions instance for this WebView implementation. The

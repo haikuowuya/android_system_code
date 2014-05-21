@@ -169,7 +169,7 @@ class WebCoreThreadWatchdog implements Runnable {
                             // Check each WebView we are aware of and find one that is capable of
                             // showing the user a prompt dialog.
                             while (it.hasNext()) {
-                                WebView activeView = it.next().getWebView();
+                                WebMockView activeView = it.next().getWebView();
 
                                 if (activeView.getWindowToken() != null &&
                                         activeView.getViewRootImpl() != null) {

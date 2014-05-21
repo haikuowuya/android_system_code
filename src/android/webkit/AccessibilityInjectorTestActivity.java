@@ -23,16 +23,16 @@ import android.os.Bundle;
 
 public class AccessibilityInjectorTestActivity extends Activity {
 
-    private WebView mWebView;
+    private WebMockView mWebView;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.accessibility_injector_test);
-        mWebView = (WebView) findViewById(R.id.webview);
+        mWebView = (WebMockView) findViewById(R.id.webview);
     }
 
-    public WebView getWebView() {
+    public WebMockView getWebView() {
         return mWebView;
     }
 }

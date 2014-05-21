@@ -93,8 +93,8 @@ import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebView.HitTestResult;
-import android.webkit.WebView.PictureListener;
+import android.webkit.WebMockView.HitTestResult;
+import android.webkit.WebMockView.PictureListener;
 import android.webkit.WebViewCore.DrawData;
 import android.webkit.WebViewCore.EventHub;
 import android.webkit.WebViewCore.TextFieldInitData;
@@ -136,7 +136,7 @@ import java.util.Set;
 import java.util.Vector;
 
 /**
- * Implements a backend provider for the {@link WebView} public API.
+ * Implements a backend provider for the {@link WebMockView} public API.
  * @hide
  */
 // TODO: Check if any WebView published API methods are called from within here, and if so
@@ -1205,13 +1205,13 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     private PictureListener mPictureListener;
 
     // Used to notify listeners about find-on-page results.
-    private WebView.FindListener mFindListener;
+    private WebMockView.FindListener mFindListener;
 
     // Used to prevent resending save password message
     private Message mResumeMsg;
 
     /**
-     * Refer to {@link WebView#requestFocusNodeHref(Message)} for more information
+     * Refer to {@link WebMockView#requestFocusNodeHref(Message)} for more information
      */
     static class FocusNodeHref {
         static final String TITLE = "title";
@@ -1219,7 +1219,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
         static final String SRC = "src";
     }
 
-    public WebViewClassic(WebView webView, WebView.PrivateAccess privateAccess) {
+    public WebViewClassic(WebMockView webView, WebMockView.PrivateAccess privateAccess) {
         mWebView = webView;
         mWebViewPrivate = privateAccess;
         mContext = webView.getContext();
@@ -1280,7 +1280,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
         public Statics getStatics() { return this; }
 
         @Override
-        public WebViewProvider createWebView(WebView webView, WebView.PrivateAccess privateAccess) {
+        public WebViewProvider createWebView(WebMockView webView, WebMockView.PrivateAccess privateAccess) {
             return new WebViewClassic(webView, privateAccess);
         }
 
@@ -1400,16 +1400,16 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
 
     // The webview that is bound to this WebViewClassic instance. Primarily needed for supplying
     // as the first param in the WebViewClient and WebChromeClient callbacks.
-    final private WebView mWebView;
+    final private WebMockView mWebView;
     // Callback interface, provides priviledged access into the WebView instance.
-    final private WebView.PrivateAccess mWebViewPrivate;
+    final private WebMockView.PrivateAccess mWebViewPrivate;
     // Cached reference to mWebView.getContext(), for convenience.
     final private Context mContext;
 
     /**
      * @return The webview proxy that this classic webview is bound to.
      */
-    public WebView getWebView() {
+    public WebMockView getWebView() {
         return mWebView;
     }
 
@@ -1423,7 +1423,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
         return this;
     }
 
-    public static WebViewClassic fromWebView(WebView webView) {
+    public static WebViewClassic fromWebView(WebMockView webView) {
         return webView == null ? null : (WebViewClassic) webView.getWebViewProvider();
     }
 
@@ -1914,7 +1914,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setHorizontalScrollbarOverlay(boolean)}
+     * See {@link WebMockView#setHorizontalScrollbarOverlay(boolean)}
      */
     @Override
     public void setHorizontalScrollbarOverlay(boolean overlay) {
@@ -1922,7 +1922,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setVerticalScrollbarOverlay(boolean)
+     * See {@link WebMockView#setVerticalScrollbarOverlay(boolean)
      */
     @Override
     public void setVerticalScrollbarOverlay(boolean overlay) {
@@ -1930,7 +1930,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#overlayHorizontalScrollbar()}
+     * See {@link WebMockView#overlayHorizontalScrollbar()}
      */
     @Override
     public boolean overlayHorizontalScrollbar() {
@@ -1938,7 +1938,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#overlayVerticalScrollbar()}
+     * See {@link WebMockView#overlayVerticalScrollbar()}
      */
     @Override
     public boolean overlayVerticalScrollbar() {
@@ -1976,7 +1976,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getVisibleTitleHeight()}
+     * See {@link WebMockView#getVisibleTitleHeight()}
      */
     @Override
     @Deprecated
@@ -2024,7 +2024,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getCertificate()}
+     * See {@link WebMockView#getCertificate()}
      */
     @Override
     public SslCertificate getCertificate() {
@@ -2032,7 +2032,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setCertificate(SslCertificate)}
+     * See {@link WebMockView#setCertificate(SslCertificate)}
      */
     @Override
     public void setCertificate(SslCertificate certificate) {
@@ -2048,7 +2048,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     //-------------------------------------------------------------------------
 
     /**
-     * See {@link WebView#savePassword(String, String, String)}
+     * See {@link WebMockView#savePassword(String, String, String)}
      */
     @Override
     public void savePassword(String host, String username, String password) {
@@ -2056,7 +2056,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setHttpAuthUsernamePassword(String, String, String, String)}
+     * See {@link WebMockView#setHttpAuthUsernamePassword(String, String, String, String)}
      */
     @Override
     public void setHttpAuthUsernamePassword(String host, String realm,
@@ -2065,7 +2065,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getHttpAuthUsernamePassword(String, String)}
+     * See {@link WebMockView#getHttpAuthUsernamePassword(String, String)}
      */
     @Override
     public String[] getHttpAuthUsernamePassword(String host, String realm) {
@@ -2108,7 +2108,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#destroy()}
+     * See {@link WebMockView#destroy()}
      */
     @Override
     public void destroy() {
@@ -2177,7 +2177,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#enablePlatformNotifications()}
+     * See {@link WebMockView#enablePlatformNotifications()}
      */
     @Deprecated
     public static void enablePlatformNotifications() {
@@ -2190,7 +2190,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#disablePlatformNotifications()}
+     * See {@link WebMockView#disablePlatformNotifications()}
      */
     @Deprecated
     public static void disablePlatformNotifications() {
@@ -2214,7 +2214,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setNetworkAvailable(boolean)}
+     * See {@link WebMockView#setNetworkAvailable(boolean)}
      */
     @Override
     public void setNetworkAvailable(boolean networkUp) {
@@ -2233,7 +2233,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#saveState(Bundle)}
+     * See {@link WebMockView#saveState(Bundle)}
      */
     @Override
     public WebBackForwardList saveState(Bundle outState) {
@@ -2283,7 +2283,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#savePicture(Bundle, File)}
+     * See {@link WebMockView#savePicture(Bundle, File)}
      */
     @Override
     @Deprecated
@@ -2344,7 +2344,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#restorePicture(Bundle, File)};
+     * See {@link WebMockView#restorePicture(Bundle, File)};
      */
     @Override
     @Deprecated
@@ -2451,7 +2451,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#restoreState(Bundle)}
+     * See {@link WebMockView#restoreState(Bundle)}
      */
     @Override
     public WebBackForwardList restoreState(Bundle inState) {
@@ -2510,7 +2510,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#loadUrl(String, Map)}
+     * See {@link WebMockView#loadUrl(String, Map)}
      */
     @Override
     public void loadUrl(String url, Map<String, String> additionalHttpHeaders) {
@@ -2527,7 +2527,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#loadUrl(String)}
+     * See {@link WebMockView#loadUrl(String)}
      */
     @Override
     public void loadUrl(String url) {
@@ -2542,7 +2542,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#postUrl(String, byte[])}
+     * See {@link WebMockView#postUrl(String, byte[])}
      */
     @Override
     public void postUrl(String url, byte[] postData) {
@@ -2559,7 +2559,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#loadData(String, String, String)}
+     * See {@link WebMockView#loadData(String, String, String)}
      */
     @Override
     public void loadData(String data, String mimeType, String encoding) {
@@ -2578,7 +2578,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#loadDataWithBaseURL(String, String, String, String, String)}
+     * See {@link WebMockView#loadDataWithBaseURL(String, String, String, String, String)}
      */
     @Override
     public void loadDataWithBaseURL(String baseUrl, String data,
@@ -2600,7 +2600,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#saveWebArchive(String)}
+     * See {@link WebMockView#saveWebArchive(String)}
      */
     @Override
     public void saveWebArchive(String filename) {
@@ -2621,7 +2621,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#saveWebArchive(String, boolean, ValueCallback)}
+     * See {@link WebMockView#saveWebArchive(String, boolean, ValueCallback)}
      */
     @Override
     public void saveWebArchive(String basename, boolean autoname, ValueCallback<String> callback) {
@@ -2635,7 +2635,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#stopLoading()}
+     * See {@link WebMockView#stopLoading()}
      */
     @Override
     public void stopLoading() {
@@ -2646,7 +2646,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#reload()}
+     * See {@link WebMockView#reload()}
      */
     @Override
     public void reload() {
@@ -2656,7 +2656,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#canGoBack()}
+     * See {@link WebMockView#canGoBack()}
      */
     @Override
     public boolean canGoBack() {
@@ -2671,7 +2671,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#goBack()}
+     * See {@link WebMockView#goBack()}
      */
     @Override
     public void goBack() {
@@ -2679,7 +2679,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#canGoForward()}
+     * See {@link WebMockView#canGoForward()}
      */
     @Override
     public boolean canGoForward() {
@@ -2694,7 +2694,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#goForward()}
+     * See {@link WebMockView#goForward()}
      */
     @Override
     public void goForward() {
@@ -2702,7 +2702,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#canGoBackOrForward(int)}
+     * See {@link WebMockView#canGoBackOrForward(int)}
      */
     @Override
     public boolean canGoBackOrForward(int steps) {
@@ -2718,7 +2718,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#goBackOrForward(int)}
+     * See {@link WebMockView#goBackOrForward(int)}
      */
     @Override
     public void goBackOrForward(int steps) {
@@ -2738,7 +2738,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#isPrivateBrowsingEnabled()}
+     * See {@link WebMockView#isPrivateBrowsingEnabled()}
      */
     @Override
     public boolean isPrivateBrowsingEnabled() {
@@ -2760,7 +2760,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#pageUp(boolean)}
+     * See {@link WebMockView#pageUp(boolean)}
      */
     @Override
     public boolean pageUp(boolean top) {
@@ -2784,7 +2784,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#pageDown(boolean)}
+     * See {@link WebMockView#pageDown(boolean)}
      */
     @Override
     public boolean pageDown(boolean bottom) {
@@ -2807,7 +2807,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearView()}
+     * See {@link WebMockView#clearView()}
      */
     @Override
     public void clearView() {
@@ -2818,7 +2818,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#capturePicture()}
+     * See {@link WebMockView#capturePicture()}
      */
     @Override
     public Picture capturePicture() {
@@ -2829,7 +2829,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getScale()}
+     * See {@link WebMockView#getScale()}
      */
     @Override
     public float getScale() {
@@ -2846,7 +2846,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setInitialScale(int)}
+     * See {@link WebMockView#setInitialScale(int)}
      */
     @Override
     public void setInitialScale(int scaleInPercent) {
@@ -2854,7 +2854,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#invokeZoomPicker()}
+     * See {@link WebMockView#invokeZoomPicker()}
      */
     @Override
     public void invokeZoomPicker() {
@@ -2867,7 +2867,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getHitTestResult()}
+     * See {@link WebMockView#getHitTestResult()}
      */
     @Override
     public HitTestResult getHitTestResult() {
@@ -2902,7 +2902,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#requestFocusNodeHref(Message)}
+     * See {@link WebMockView#requestFocusNodeHref(Message)}
      */
     @Override
     public void requestFocusNodeHref(Message hrefMsg) {
@@ -2924,7 +2924,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#requestImageRef(Message)}
+     * See {@link WebMockView#requestImageRef(Message)}
      */
     @Override
     public void requestImageRef(Message msg) {
@@ -3383,7 +3383,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getUrl()}
+     * See {@link WebMockView#getUrl()}
      */
     @Override
     public String getUrl() {
@@ -3392,7 +3392,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getOriginalUrl()}
+     * See {@link WebMockView#getOriginalUrl()}
      */
     @Override
     public String getOriginalUrl() {
@@ -3401,7 +3401,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getTitle()}
+     * See {@link WebMockView#getTitle()}
      */
     @Override
     public String getTitle() {
@@ -3410,7 +3410,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getFavicon()}
+     * See {@link WebMockView#getFavicon()}
      */
     @Override
     public Bitmap getFavicon() {
@@ -3419,7 +3419,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getTouchIconUrl()}
+     * See {@link WebMockView#getTouchIconUrl()}
      */
     @Override
     public String getTouchIconUrl() {
@@ -3428,7 +3428,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getProgress()}
+     * See {@link WebMockView#getProgress()}
      */
     @Override
     public int getProgress() {
@@ -3436,7 +3436,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getContentHeight()}
+     * See {@link WebMockView#getContentHeight()}
      */
     @Override
     public int getContentHeight() {
@@ -3444,7 +3444,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getContentWidth()}
+     * See {@link WebMockView#getContentWidth()}
      */
     @Override
     public int getContentWidth() {
@@ -3457,7 +3457,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#pauseTimers()}
+     * See {@link WebMockView#pauseTimers()}
      */
     @Override
     public void pauseTimers() {
@@ -3465,7 +3465,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#resumeTimers()}
+     * See {@link WebMockView#resumeTimers()}
      */
     @Override
     public void resumeTimers() {
@@ -3473,7 +3473,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#onPause()}
+     * See {@link WebMockView#onPause()}
      */
     @Override
     public void onPause() {
@@ -3511,7 +3511,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#onResume()}
+     * See {@link WebMockView#onResume()}
      */
     @Override
     public void onResume() {
@@ -3529,7 +3529,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#isPaused()}
+     * See {@link WebMockView#isPaused()}
      */
     @Override
     public boolean isPaused() {
@@ -3537,7 +3537,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#freeMemory()}
+     * See {@link WebMockView#freeMemory()}
      */
     @Override
     public void freeMemory() {
@@ -3545,7 +3545,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearCache(boolean)}
+     * See {@link WebMockView#clearCache(boolean)}
      */
     @Override
     public void clearCache(boolean includeDiskFiles) {
@@ -3557,7 +3557,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearFormData()}
+     * See {@link WebMockView#clearFormData()}
      */
     @Override
     public void clearFormData() {
@@ -3567,7 +3567,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearHistory()}
+     * See {@link WebMockView#clearHistory()}
      */
     @Override
     public void clearHistory() {
@@ -3576,7 +3576,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearSslPreferences()}
+     * See {@link WebMockView#clearSslPreferences()}
      */
     @Override
     public void clearSslPreferences() {
@@ -3584,7 +3584,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#copyBackForwardList()}
+     * See {@link WebMockView#copyBackForwardList()}
      */
     @Override
     public WebBackForwardListClassic copyBackForwardList() {
@@ -3592,16 +3592,16 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setFindListener(WebView.FindListener)}.
+     * See {@link WebMockView#setFindListener(WebMockView.FindListener)}.
      * @hide
      */
      @Override
-    public void setFindListener(WebView.FindListener listener) {
+    public void setFindListener(WebMockView.FindListener listener) {
          mFindListener = listener;
      }
 
     /**
-     * See {@link WebView#findNext(boolean)}
+     * See {@link WebMockView#findNext(boolean)}
      */
     @Override
     public void findNext(boolean forward) {
@@ -3612,7 +3612,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#findAll(String)}
+     * See {@link WebMockView#findAll(String)}
      */
     @Override
     public int findAll(String find) {
@@ -3756,7 +3756,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#clearMatches()}
+     * See {@link WebMockView#clearMatches()}
      */
     @Override
     public void clearMatches() {
@@ -3785,7 +3785,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#documentHasImages(Message)}
+     * See {@link WebMockView#documentHasImages(Message)}
      */
     @Override
     public void documentHasImages(Message response) {
@@ -4036,7 +4036,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setWebViewClient(WebViewClient)}
+     * See {@link WebMockView#setWebViewClient(WebViewClient)}
      */
     @Override
     public void setWebViewClient(WebViewClient client) {
@@ -4054,7 +4054,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setDownloadListener(DownloadListener)}
+     * See {@link WebMockView#setDownloadListener(DownloadListener)}
      */
     @Override
     public void setDownloadListener(DownloadListener listener) {
@@ -4062,7 +4062,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setWebChromeClient(WebChromeClient)}
+     * See {@link WebMockView#setWebChromeClient(WebChromeClient)}
      */
     @Override
     public void setWebChromeClient(WebChromeClient client) {
@@ -4097,7 +4097,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setPictureListener(PictureListener)}
+     * See {@link WebMockView#setPictureListener(PictureListener)}
      */
     @Override
     @Deprecated
@@ -4116,7 +4116,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#addJavascriptInterface(Object, String)}
+     * See {@link WebMockView#addJavascriptInterface(Object, String)}
      */
     @Override
     public void addJavascriptInterface(Object object, String name) {
@@ -4140,7 +4140,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#removeJavascriptInterface(String)}
+     * See {@link WebMockView#removeJavascriptInterface(String)}
      */
     @Override
     public void removeJavascriptInterface(String interfaceName) {
@@ -4152,7 +4152,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getSettings()}
+     * See {@link WebMockView#getSettings()}
      * Note this returns WebSettingsClassic, a sub-class of WebSettings, which can be used
      * to access extension APIs.
      */
@@ -4162,7 +4162,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getPluginList()}
+     * See {@link WebMockView#getPluginList()}
      */
     @Deprecated
     public static synchronized PluginList getPluginList() {
@@ -4170,7 +4170,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#refreshPlugins(boolean)}
+     * See {@link WebMockView#refreshPlugins(boolean)}
      */
     @Deprecated
     public void refreshPlugins(boolean reloadOpenPages) {
@@ -6881,7 +6881,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#getZoomControls()}
+     * See {@link WebMockView#getZoomControls()}
      */
     @Override
     @Deprecated
@@ -6910,7 +6910,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#canZoomIn()}
+     * See {@link WebMockView#canZoomIn()}
      */
     @Override
     public boolean canZoomIn() {
@@ -6918,7 +6918,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#canZoomOut()}
+     * See {@link WebMockView#canZoomOut()}
      */
     @Override
     public boolean canZoomOut() {
@@ -6926,7 +6926,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#zoomIn()}
+     * See {@link WebMockView#zoomIn()}
      */
     @Override
     public boolean zoomIn() {
@@ -6934,7 +6934,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#zoomOut()}
+     * See {@link WebMockView#zoomOut()}
      */
     @Override
     public boolean zoomOut() {
@@ -8495,7 +8495,7 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
     }
 
     /**
-     * See {@link WebView#setBackgroundColor(int)}
+     * See {@link WebMockView#setBackgroundColor(int)}
      */
     @Override
     public void setBackgroundColor(int color) {
@@ -8663,9 +8663,9 @@ public final class WebViewClassic implements WebViewProvider, WebViewProvider.Sc
 
     private static class PictureWrapperView extends View {
         Picture mPicture;
-        WebView mWebView;
+        WebMockView mWebView;
 
-        public PictureWrapperView(Context context, Picture picture, WebView parent) {
+        public PictureWrapperView(Context context, Picture picture, WebMockView parent) {
             super(context);
             mPicture = picture;
             mWebView = parent;

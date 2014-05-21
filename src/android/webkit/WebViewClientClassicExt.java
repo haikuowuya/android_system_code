@@ -30,7 +30,7 @@ public class WebViewClientClassicExt extends WebViewClient {
      * resource, but the WebView chose to proceed anyway based on a
      * decision retained from a previous response to onReceivedSslError().
      */
-    public void onProceededAfterSslError(WebView view, SslError error) {
+    public void onProceededAfterSslError(WebMockView view, SslError error) {
     }
 
     /**
@@ -46,7 +46,7 @@ public class WebViewClientClassicExt extends WebViewClient {
      *            handle the user's response.
      * @param host_and_port The host and port of the requesting server.
      */
-    public void onReceivedClientCertRequest(WebView view,
+    public void onReceivedClientCertRequest(WebMockView view,
             ClientCertRequestHandler handler, String host_and_port) {
         handler.cancel();
     }

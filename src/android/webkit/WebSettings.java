@@ -188,8 +188,8 @@ public abstract class WebSettings {
      * Sets whether the WebView should support zooming using its on-screen zoom
      * controls and gestures. The particular zoom mechanisms that should be used
      * can be set with {@link #setBuiltInZoomControls}. This setting does not
-     * affect zooming performed using the {@link WebView#zoomIn()} and
-     * {@link WebView#zoomOut()} methods. The default is true.
+     * affect zooming performed using the {@link WebMockView#zoomIn()} and
+     * {@link WebMockView#zoomOut()} methods. The default is true.
      *
      * @param support whether the WebView should support zoom
      */
@@ -894,7 +894,7 @@ public abstract class WebSettings {
      * image resources. Note that if the value of this setting is
      * changed from true to false, network resources referenced by content
      * currently displayed by the WebView are not fetched until
-     * {@link android.webkit.WebView#reload} is called.
+     * {@link android.webkit.WebMockView#reload} is called.
      * If the application does not have the
      * {@link android.Manifest.permission#INTERNET} permission, attempts to set
      * a value of false will cause a {@link java.lang.SecurityException}
@@ -904,7 +904,7 @@ public abstract class WebSettings {
      *
      * @param flag whether the WebView should not load any resources from the
      *             network
-     * @see android.webkit.WebView#reload
+     * @see android.webkit.WebMockView#reload
      */
     public synchronized void setBlockNetworkLoads(boolean flag) {
         throw new MustOverrideException();
@@ -1269,7 +1269,7 @@ public abstract class WebSettings {
 
     /**
      * Tells the WebView whether it needs to set a node to have focus when
-     * {@link WebView#requestFocus(int, android.graphics.Rect)} is called. The
+     * {@link WebMockView#requestFocus(int, android.graphics.Rect)} is called. The
      * default value is true.
      *
      * @param flag whether the WebView needs to set a node

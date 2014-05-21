@@ -30,7 +30,7 @@ import java.util.Map;
 
 
 /**
- * Manages the HTTP cache used by an application's {@link WebView} instances.
+ * Manages the HTTP cache used by an application's {@link WebMockView} instances.
  * @deprecated Access to the HTTP cache will be removed in a future release.
  * @hide Since {@link android.os.Build.VERSION_CODES#JELLY_BEAN_MR1}
  */
@@ -241,7 +241,7 @@ public final class CacheManager {
     /**
      * Initializes the HTTP cache. This method must be called before any
      * CacheManager methods are used. Note that this is called automatically
-     * when a {@link WebView} is created.
+     * when a {@link WebMockView} is created.
      *
      * @param context the application context
      */

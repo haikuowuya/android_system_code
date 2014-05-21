@@ -49,7 +49,7 @@ public class WebViewDatabase {
      * Note that these are unrelated to HTTP authentication credentials.
      *
      * @return true if there are any saved username/password pairs
-     * @see WebView#savePassword
+     * @see WebMockView#savePassword
      * @see clearUsernamePassword
      */
     public boolean hasUsernamePassword() {
@@ -60,7 +60,7 @@ public class WebViewDatabase {
      * Clears any saved username/password pairs for web forms.
      * Note that these are unrelated to HTTP authentication credentials.
      *
-     * @see WebView#savePassword
+     * @see WebMockView#savePassword
      * @see hasUsernamePassword
      */
     public void clearUsernamePassword() {

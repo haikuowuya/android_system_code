@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * This class is used to manage the JavaScript storage APIs provided by the
- * {@link WebView}. It manages the Application Cache API, the Web SQL Database
+ * {@link WebMockView}. It manages the Application Cache API, the Web SQL Database
  * API and the HTML5 Web Storage API.
  *
  * The Application Cache API provides a mechanism to create and maintain an

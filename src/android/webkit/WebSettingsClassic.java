@@ -386,7 +386,7 @@ public class WebSettingsClassic extends WebSettings {
      * @param context a Context object used to access application assets
      * @param locale The Locale to use in the User-Agent string.
      * @see WebViewFactoryProvider#getDefaultUserAgent(Context)
-     * @see WebView#getDefaultUserAgent(Context)
+     * @see WebMockView#getDefaultUserAgent(Context)
      */
     public static String getDefaultUserAgentForLocale(Context context, Locale locale) {
         StringBuffer buffer = new StringBuffer();

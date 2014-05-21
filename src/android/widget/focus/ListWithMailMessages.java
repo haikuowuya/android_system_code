@@ -28,7 +28,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
-import android.webkit.WebView;
+import android.webkit.WebMockView;
 
 import java.util.List;
 
@@ -135,7 +135,7 @@ public class ListWithMailMessages extends ListActivity {
             TextView subject = (TextView) messageUi.findViewById(R.id.subject);
             subject.setText(message.getSubject());
 
-            WebView body = (WebView) messageUi.findViewById(R.id.body);
+            WebMockView body = (WebMockView) messageUi.findViewById(R.id.body);
             body.loadData(message.getBody(), mimeType, null);
 //            body.setText(message.getBody());
             body.setFocusable(message.isFocusable());

@@ -26,7 +26,7 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
 /**
- * Perform asynchronous dispatch of input events in a {@link WebView}.
+ * Perform asynchronous dispatch of input events in a {@link WebMockView}.
  *
  * This dispatcher is shared by the UI thread ({@link WebViewClassic}) and web kit
  * thread ({@link WebViewCore}).  The UI thread enqueues events for

@@ -30,21 +30,21 @@ public class WebChromeClient {
      * @param newProgress Current page loading progress, represented by
      *                    an integer between 0 and 100.
      */
-    public void onProgressChanged(WebView view, int newProgress) {}
+    public void onProgressChanged(WebMockView view, int newProgress) {}
 
     /**
      * Notify the host application of a change in the document title.
      * @param view The WebView that initiated the callback.
      * @param title A String containing the new title of the document.
      */
-    public void onReceivedTitle(WebView view, String title) {}
+    public void onReceivedTitle(WebMockView view, String title) {}
 
     /**
      * Notify the host application of a new favicon for the current page.
      * @param view The WebView that initiated the callback.
      * @param icon A Bitmap containing the favicon for the current page.
      */
-    public void onReceivedIcon(WebView view, Bitmap icon) {}
+    public void onReceivedIcon(WebMockView view, Bitmap icon) {}
 
     /**
      * Notify the host application of the url for an apple-touch-icon.
@@ -52,7 +52,7 @@ public class WebChromeClient {
      * @param url The icon url.
      * @param precomposed True if the url is for a precomposed touch icon.
      */
-    public void onReceivedTouchIconUrl(WebView view, String url,
+    public void onReceivedTouchIconUrl(WebMockView view, String url,
             boolean precomposed) {}
 
     /**
@@ -110,9 +110,9 @@ public class WebChromeClient {
      *                      such as the user clicking a link.
      * @param resultMsg The message to send when once a new WebView has been
      *                  created. resultMsg.obj is a
-     *                  {@link WebView.WebViewTransport} object. This should be
+     *                  {@link WebMockView.WebViewTransport} object. This should be
      *                  used to transport the new WebView, by calling
-     *                  {@link WebView.WebViewTransport#setWebView(WebView)
+     *                  {@link WebMockView.WebViewTransport#setWebView(WebMockView)
      *                  WebView.WebViewTransport.setWebView(WebView)}.
      * @return This method should return true if the host application will
      *         create a new window, in which case resultMsg should be sent to
@@ -120,7 +120,7 @@ public class WebChromeClient {
      *         false from this method but also sending resultMsg will result in
      *         undefined behavior.
      */
-    public boolean onCreateWindow(WebView view, boolean isDialog,
+    public boolean onCreateWindow(WebMockView view, boolean isDialog,
             boolean isUserGesture, Message resultMsg) {
         return false;
     }
@@ -131,7 +131,7 @@ public class WebChromeClient {
      * WebView be displayed.
      * @param view The WebView that needs to be focused.
      */
-    public void onRequestFocus(WebView view) {}
+    public void onRequestFocus(WebMockView view) {}
 
     /**
      * Notify the host application to close the given WebView and remove it
@@ -140,7 +140,7 @@ public class WebChromeClient {
      * in javascript.
      * @param window The WebView that needs to be closed.
      */
-    public void onCloseWindow(WebView window) {}
+    public void onCloseWindow(WebMockView window) {}
 
     /**
      * Tell the client to display a javascript alert dialog.  If the client
@@ -152,7 +152,7 @@ public class WebChromeClient {
      * @param result A JsResult to confirm that the user hit enter.
      * @return boolean Whether the client will handle the alert dialog.
      */
-    public boolean onJsAlert(WebView view, String url, String message,
+    public boolean onJsAlert(WebMockView view, String url, String message,
             JsResult result) {
         return false;
     }
@@ -170,7 +170,7 @@ public class WebChromeClient {
      *               javascript.
      * @return boolean Whether the client will handle the confirm dialog.
      */
-    public boolean onJsConfirm(WebView view, String url, String message,
+    public boolean onJsConfirm(WebMockView view, String url, String message,
             JsResult result) {
         return false;
     }
@@ -189,7 +189,7 @@ public class WebChromeClient {
      *               javascript.
      * @return boolean Whether the client will handle the prompt dialog.
      */
-    public boolean onJsPrompt(WebView view, String url, String message,
+    public boolean onJsPrompt(WebMockView view, String url, String message,
             String defaultValue, JsPromptResult result) {
         return false;
     }
@@ -210,7 +210,7 @@ public class WebChromeClient {
      *               javascript.
      * @return boolean Whether the client will handle the confirm dialog.
      */
-    public boolean onJsBeforeUnload(WebView view, String url, String message,
+    public boolean onJsBeforeUnload(WebMockView view, String url, String message,
             JsResult result) {
         return false;
     }
