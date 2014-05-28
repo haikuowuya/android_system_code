@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\android_workspace2\\system_code\\src\\android\\bluetooth\\IBluetoothManagerCallback.aidl
+ * Original file: D:\\android_workspace\\system_code\\src\\android\\bluetooth\\IBluetoothManagerCallback.aidl
  */
 package android.bluetooth;
 /**

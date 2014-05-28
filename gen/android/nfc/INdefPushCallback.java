@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\android_workspace2\\system_code\\src\\android\\nfc\\INdefPushCallback.aidl
+ * Original file: D:\\android_workspace\\system_code\\src\\android\\nfc\\INdefPushCallback.aidl
  */
 package android.nfc;
 /**

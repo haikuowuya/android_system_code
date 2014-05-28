@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\android_workspace2\\system_code\\src\\android\\content\\ISyncAdapter.aidl
+ * Original file: D:\\android_workspace\\system_code\\src\\android\\content\\ISyncAdapter.aidl
  */
 package android.content;
 /**

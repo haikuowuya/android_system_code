@@ -446,7 +446,7 @@ public class TextView extends View implements ViewTreeObserver.OnPreDrawListener
     }
 
     public TextView(Context context, AttributeSet attrs) {
-        this(context, attrs, com.android.internal.R.attr.textViewStyle);
+        this(context, attrs,  R.attr.textViewStyle);
     }
 
     @SuppressWarnings("deprecation")

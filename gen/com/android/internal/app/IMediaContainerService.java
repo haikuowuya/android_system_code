@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\android_workspace2\\system_code\\src\\com\\android\\internal\\app\\IMediaContainerService.aidl
+ * Original file: D:\\android_workspace\\system_code\\src\\com\\android\\internal\\app\\IMediaContainerService.aidl
  */
 package com.android.internal.app;
 public interface IMediaContainerService extends android.os.IInterface
