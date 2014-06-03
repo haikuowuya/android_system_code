@@ -1,12 +1,9 @@
 /*
  * Copyright (C) 2007 The Android Open Source Project
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,264 +25,295 @@ import android.view.ViewDebug;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-
 /**
  * An extension to TextView that supports the {@link android.widget.Checkable} interface.
- * This is useful when used in a {@link android.widget.ListView ListView} where the it's 
- * {@link android.widget.ListView#setChoiceMode(int) setChoiceMode} has been set to
+ * This is useful when used in a {@link android.widget.ListView ListView} where the it's {@link android.widget.ListView#setChoiceMode(int) setChoiceMode} has been set to
  * something other than {@link android.widget.ListView#CHOICE_MODE_NONE CHOICE_MODE_NONE}.
- *
+ * 
  * @attr ref android.R.styleable#CheckedTextView_checked
  * @attr ref android.R.styleable#CheckedTextView_checkMark
  */
-public class CheckedTextView extends TextView implements Checkable {
-	/**是否被选中标志*/
-    private boolean mChecked;
-    /**右边复选框的图标资源id*/
-    private int mCheckMarkResource;
-    /**右边复选框的图标资源*/
-    private Drawable mCheckMarkDrawable;
-    private int mBasePadding;
-    /**右边复选框的图标宽度*/
-    private int mCheckMarkWidth;
-    private boolean mNeedRequestlayout;
+public class CheckedTextView extends TextView implements Checkable
+{
+	/** 是否被选中标志 */
+	private boolean mChecked;
+	/** 右边复选框的图标资源id */
+	private int mCheckMarkResource;
+	/** 右边复选框的图标资源 */
+	private Drawable mCheckMarkDrawable;
+	private int mBasePadding;
+	/** 右边复选框的图标宽度 */
+	private int mCheckMarkWidth;
+	private boolean mNeedRequestlayout;
 
-    private static final int[] CHECKED_STATE_SET = {
-        R.attr.state_checked
-    };
+	private static final int[] CHECKED_STATE_SET = { R.attr.state_checked };
 
-    public CheckedTextView(Context context) {
-        this(context, null);
-    }
+	public CheckedTextView(Context context)
+	{
+		this(context, null);
+	}
 
-    public CheckedTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.checkedTextViewStyle);
-    }
+	public CheckedTextView(Context context, AttributeSet attrs)
+	{
+		this(context, attrs, R.attr.checkedTextViewStyle);
+	}
 
-    public CheckedTextView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+	public CheckedTextView(Context context, AttributeSet attrs, int defStyle)
+	{
+		super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.CheckedTextView, defStyle, 0);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CheckedTextView, defStyle, 0);
 
-        Drawable d = a.getDrawable(R.styleable.CheckedTextView_checkMark);
-        if (d != null) {
-            setCheckMarkDrawable(d);
-        }
+		Drawable d = a.getDrawable(R.styleable.CheckedTextView_checkMark);
+		if (d != null)
+		{
+			setCheckMarkDrawable(d);
+		}
 
-        boolean checked = a.getBoolean(R.styleable.CheckedTextView_checked, false);
-        setChecked(checked);
+		boolean checked = a.getBoolean(R.styleable.CheckedTextView_checked, false);
+		setChecked(checked);
 
-        a.recycle();
-    }
+		a.recycle();
+	}
 
-    public void toggle() {
-        setChecked(!mChecked);
-    }
+	public void toggle()
+	{
+		setChecked(!mChecked);
+	}
 
-    @ViewDebug.ExportedProperty
-    public boolean isChecked() {
-        return mChecked;
-    }
+	@ViewDebug.ExportedProperty
+	public boolean isChecked()
+	{
+		return mChecked;
+	}
 
-    /**
-     * <p>Changes the checked state of this text view.</p>
-     *
-     * @param checked true to check the text, false to uncheck it
-     */
-    public void setChecked(boolean checked) {
-        if (mChecked != checked) {
-            mChecked = checked;
-            refreshDrawableState();
-            notifyAccessibilityStateChanged();
-        }
-    }
+	/**
+	 * <p>
+	 * Changes the checked state of this text view.
+	 * </p>
+	 * 
+	 * @param checked
+	 *            true to check the text, false to uncheck it
+	 */
+	public void setChecked(boolean checked)
+	{
+		if (mChecked != checked)
+		{
+			mChecked = checked;
+			refreshDrawableState();
+			notifyAccessibilityStateChanged();
+		}
+	}
 
+	/**
+	 * Set the checkmark to a given Drawable, identified by its resourece id. This will be drawn
+	 * when {@link #isChecked()} is true.
+	 * 
+	 * @param resid
+	 *            The Drawable to use for the checkmark.
+	 * @see #setCheckMarkDrawable(Drawable)
+	 * @see #getCheckMarkDrawable()
+	 * @attr ref android.R.styleable#CheckedTextView_checkMark
+	 */
+	public void setCheckMarkDrawable(int resid)
+	{
+		if (resid != 0 && resid == mCheckMarkResource)
+		{
+			return;
+		}
+		mCheckMarkResource = resid;
+		Drawable d = null;
+		if (mCheckMarkResource != 0)
+		{
+			d = getResources().getDrawable(mCheckMarkResource);
+		}
+		setCheckMarkDrawable(d);
+	}
 
-    /**
-     * Set the checkmark to a given Drawable, identified by its resourece id. This will be drawn
-     * when {@link #isChecked()} is true.
-     *
-     * @param resid The Drawable to use for the checkmark.
-     *
-     * @see #setCheckMarkDrawable(Drawable)
-     * @see #getCheckMarkDrawable()
-     *
-     * @attr ref android.R.styleable#CheckedTextView_checkMark
-     */
-    public void setCheckMarkDrawable(int resid) {
-        if (resid != 0 && resid == mCheckMarkResource) {
-            return;
-        }
+	/**
+	 * Set the checkmark to a given Drawable. This will be drawn when {@link #isChecked()} is true.
+	 * 
+	 * @param d
+	 *            The Drawable to use for the checkmark.
+	 * @see #setCheckMarkDrawable(int)
+	 * @see #getCheckMarkDrawable()
+	 * @attr ref android.R.styleable#CheckedTextView_checkMark
+	 */
+	public void setCheckMarkDrawable(Drawable d)
+	{
+		if (mCheckMarkDrawable != null)
+		{
+			mCheckMarkDrawable.setCallback(null);
+			unscheduleDrawable(mCheckMarkDrawable);
+		}
+		mNeedRequestlayout = (d != mCheckMarkDrawable);
+		if (d != null)
+		{
+			d.setCallback(this);
+			d.setVisible(getVisibility() == VISIBLE, false);
+			d.setState(CHECKED_STATE_SET);
+			setMinHeight(d.getIntrinsicHeight());
 
-        mCheckMarkResource = resid;
+			mCheckMarkWidth = d.getIntrinsicWidth();
+			d.setState(getDrawableState());
+		}
+		else
+		{
+			mCheckMarkWidth = 0;
+		}
+		mCheckMarkDrawable = d;
+		// Do padding resolution. This will call internalSetPadding() and do a requestLayout() if needed.
+		resolvePadding();
+	}
 
-        Drawable d = null;
-        if (mCheckMarkResource != 0) {
-            d = getResources().getDrawable(mCheckMarkResource);
-        }
-        setCheckMarkDrawable(d);
-    }
+	/**
+	 * Gets the checkmark drawable
+	 * 
+	 * @return The drawable use to represent the checkmark, if any.
+	 * @see #setCheckMarkDrawable(Drawable)
+	 * @see #setCheckMarkDrawable(int)
+	 * @attr ref android.R.styleable#CheckedTextView_checkMark
+	 */
+	public Drawable getCheckMarkDrawable()
+	{
+		return mCheckMarkDrawable;
+	}
 
-    /**
-     * Set the checkmark to a given Drawable. This will be drawn when {@link #isChecked()} is true.
-     *
-     * @param d The Drawable to use for the checkmark.
-     *
-     * @see #setCheckMarkDrawable(int)
-     * @see #getCheckMarkDrawable()
-     *
-     * @attr ref android.R.styleable#CheckedTextView_checkMark
-     */
-    public void setCheckMarkDrawable(Drawable d) {
-        if (mCheckMarkDrawable != null) {
-            mCheckMarkDrawable.setCallback(null);
-            unscheduleDrawable(mCheckMarkDrawable);
-        }
-        mNeedRequestlayout = (d != mCheckMarkDrawable);
-        if (d != null) {
-            d.setCallback(this);
-            d.setVisible(getVisibility() == VISIBLE, false);
-            d.setState(CHECKED_STATE_SET);
-            setMinHeight(d.getIntrinsicHeight());
+	/**
+	 * @hide
+	 */
+	@Override
+	protected void internalSetPadding(int left, int top, int right, int bottom)
+	{
+		super.internalSetPadding(left, top, right, bottom);
+		setBasePadding(isLayoutRtl());
+	}
 
-            mCheckMarkWidth = d.getIntrinsicWidth();
-            d.setState(getDrawableState());
-        } else {
-            mCheckMarkWidth = 0;
-        }
-        mCheckMarkDrawable = d;
-        // Do padding resolution. This will call internalSetPadding() and do a requestLayout() if needed.
-        resolvePadding();
-    }
+	@Override
+	public void onRtlPropertiesChanged(int layoutDirection)
+	{
+		super.onRtlPropertiesChanged(layoutDirection);
+		updatePadding();
+	}
 
-    /**
-     * Gets the checkmark drawable
-     *
-     * @return The drawable use to represent the checkmark, if any.
-     *
-     * @see #setCheckMarkDrawable(Drawable)
-     * @see #setCheckMarkDrawable(int)
-     *
-     * @attr ref android.R.styleable#CheckedTextView_checkMark
-     */
-    public Drawable getCheckMarkDrawable() {
-        return mCheckMarkDrawable;
-    }
+	private void updatePadding()
+	{
+		resetPaddingToInitialValues();
+		int newPadding = (mCheckMarkDrawable != null) ? mCheckMarkWidth + mBasePadding : mBasePadding;
+		if (isLayoutRtl())
+		{
+			mNeedRequestlayout |= (mPaddingLeft != newPadding);
+			mPaddingLeft = newPadding;
+		}
+		else
+		{
+			mNeedRequestlayout |= (mPaddingRight != newPadding);
+			mPaddingRight = newPadding;
+		}
+		if (mNeedRequestlayout)
+		{
+			requestLayout();
+			mNeedRequestlayout = false;
+		}
+	}
 
-    /**
-     * @hide
-     */
-    @Override
-    protected void internalSetPadding(int left, int top, int right, int bottom) {
-        super.internalSetPadding(left, top, right, bottom);
-        setBasePadding(isLayoutRtl());
-    }
+	private void setBasePadding(boolean isLayoutRtl)
+	{
+		if (isLayoutRtl)
+		{
+			mBasePadding = mPaddingLeft;
+		}
+		else
+		{
+			mBasePadding = mPaddingRight;
+		}
+	}
 
-    @Override
-    public void onRtlPropertiesChanged(int layoutDirection) {
-        super.onRtlPropertiesChanged(layoutDirection);
-        updatePadding();
-    }
+	@Override
+	protected void onDraw(Canvas canvas)
+	{
+		super.onDraw(canvas);
 
-    private void updatePadding() {
-        resetPaddingToInitialValues();
-        int newPadding = (mCheckMarkDrawable != null) ?
-                mCheckMarkWidth + mBasePadding : mBasePadding;
-        if (isLayoutRtl()) {
-            mNeedRequestlayout |= (mPaddingLeft != newPadding);
-            mPaddingLeft = newPadding;
-        } else {
-            mNeedRequestlayout |= (mPaddingRight != newPadding);
-            mPaddingRight = newPadding;
-        }
-        if (mNeedRequestlayout) {
-            requestLayout();
-            mNeedRequestlayout = false;
-        }
-    }
+		final Drawable checkMarkDrawable = mCheckMarkDrawable;
+		if (checkMarkDrawable != null)
+		{
+			final int verticalGravity = getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
+			final int height = checkMarkDrawable.getIntrinsicHeight();
 
-    private void setBasePadding(boolean isLayoutRtl) {
-        if (isLayoutRtl) {
-            mBasePadding = mPaddingLeft;
-        } else {
-            mBasePadding = mPaddingRight;
-        }
-    }
+			int y = 0;
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+			switch (verticalGravity)
+			{
+			case Gravity.BOTTOM:
+				y = getHeight() - height;
+				break;
+			case Gravity.CENTER_VERTICAL:
+				y = (getHeight() - height) / 2;
+				break;
+			}
 
-        final Drawable checkMarkDrawable = mCheckMarkDrawable;
-        if (checkMarkDrawable != null) {
-            final int verticalGravity = getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
-            final int height = checkMarkDrawable.getIntrinsicHeight();
+			final boolean isLayoutRtl = isLayoutRtl();
+			final int width = getWidth();
+			final int top = y;
+			final int bottom = top + height;
+			final int left;
+			final int right;
+			if (isLayoutRtl)
+			{
+				left = mBasePadding;
+				right = left + mCheckMarkWidth;
+			}
+			else
+			{
+				right = width - mBasePadding;
+				left = right - mCheckMarkWidth;
+			}
+			checkMarkDrawable.setBounds(left, top, right, bottom);
+			checkMarkDrawable.draw(canvas);
+		}
+	}
 
-            int y = 0;
+	@Override
+	protected int[] onCreateDrawableState(int extraSpace)
+	{
+		final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+		if (isChecked())
+		{
+			mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+		}
+		return drawableState;
+	}
 
-            switch (verticalGravity) {
-                case Gravity.BOTTOM:
-                    y = getHeight() - height;
-                    break;
-                case Gravity.CENTER_VERTICAL:
-                    y = (getHeight() - height) / 2;
-                    break;
-            }
-            
-            final boolean isLayoutRtl = isLayoutRtl();
-            final int width = getWidth();
-            final int top = y;
-            final int bottom = top + height;
-            final int left;
-            final int right;
-            if (isLayoutRtl) {
-                left = mBasePadding;
-                right = left + mCheckMarkWidth;
-            } else {
-                right = width - mBasePadding;
-                left = right - mCheckMarkWidth;
-            }
-            checkMarkDrawable.setBounds( left, top, right, bottom);
-            checkMarkDrawable.draw(canvas);
-        }
-    }
-    
-    @Override
-    protected int[] onCreateDrawableState(int extraSpace) {
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-        if (isChecked()) {
-            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
-        }
-        return drawableState;
-    }
+	@Override
+	protected void drawableStateChanged()
+	{
+		super.drawableStateChanged();
 
-    @Override
-    protected void drawableStateChanged() {
-        super.drawableStateChanged();
-        
-        if (mCheckMarkDrawable != null) {
-            int[] myDrawableState = getDrawableState();
-            
-            // Set the state of the Drawable
-            mCheckMarkDrawable.setState(myDrawableState);
-            
-            invalidate();
-        }
-    }
+		if (mCheckMarkDrawable != null)
+		{
+			int[] myDrawableState = getDrawableState();
 
-    @Override
-    public void onInitializeAccessibilityEvent(AccessibilityEvent event) {
-        super.onInitializeAccessibilityEvent(event);
-        event.setClassName(CheckedTextView.class.getName());
-        event.setChecked(mChecked);
-    }
+			// Set the state of the Drawable
+			mCheckMarkDrawable.setState(myDrawableState);
 
-    @Override
-    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
-        super.onInitializeAccessibilityNodeInfo(info);
-        info.setClassName(CheckedTextView.class.getName());
-        info.setCheckable(true);
-        info.setChecked(mChecked);
-    }
+			invalidate();
+		}
+	}
+
+	@Override
+	public void onInitializeAccessibilityEvent(AccessibilityEvent event)
+	{
+		super.onInitializeAccessibilityEvent(event);
+		event.setClassName(CheckedTextView.class.getName());
+		event.setChecked(mChecked);
+	}
+
+	@Override
+	public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info)
+	{
+		super.onInitializeAccessibilityNodeInfo(info);
+		info.setClassName(CheckedTextView.class.getName());
+		info.setCheckable(true);
+		info.setChecked(mChecked);
+	}
 }

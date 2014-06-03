@@ -114,7 +114,7 @@ public class LayerDrawable extends Drawable implements Drawable.Callback {
 
         int type;
 
-        TypedArray a = r.obtainAttributes(attrs, com.android.internal.R.styleable.LayerDrawable);
+        TypedArray a = r.obtainAttributes(attrs, R.styleable.LayerDrawable);
 
         mOpacityOverride = a.getInt(com.android.internal.R.styleable.LayerDrawable_opacity,
                 PixelFormat.UNKNOWN);
