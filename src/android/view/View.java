@@ -2908,11 +2908,8 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	public View(Context context, AttributeSet attrs, int defStyle)
 	{
 		this(context);
-
 		TypedArray a = context.obtainStyledAttributes(attrs, com.android.internal.R.styleable.View, defStyle, 0);
-
 		Drawable background = null;
-
 		int leftPadding = -1;
 		int topPadding = -1;
 		int rightPadding = -1;
@@ -5505,8 +5502,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	}
 
 	/**
-	 * Check for state of {@link #setFitsSystemWindows(boolean). If this method
-	 * returns true, the default implementation of {@link #fitSystemWindows(Rect)} will be executed.
+	 * Check for state of {@link #setFitsSystemWindows(boolean). If this method returns true, the default implementation of {@link #fitSystemWindows(Rect)} will be executed.
 	 * 
 	 * @return Returns true if the default implementation of {@link #fitSystemWindows(Rect)} will be executed.
 	 * @attr ref android.R.styleable#View_fitsSystemWindows
@@ -16427,7 +16423,6 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	protected void debug(int depth)
 	{
 		String output = debugIndent(depth - 1);
-
 		output += "+ " + this;
 		int id = getId();
 		if (id != -1)
