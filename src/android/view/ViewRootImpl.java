@@ -1228,6 +1228,7 @@ public final class ViewRootImpl implements ViewParent, View.AttachInfo.Callbacks
 		final View.AttachInfo attachInfo = mAttachInfo;
 
 		final int viewVisibility = getHostVisibility();
+		//mViewVisibility 初始值为GONE
 		boolean viewVisibilityChanged = mViewVisibility != viewVisibility || mNewSurfaceNeeded;
 
 		WindowManager.LayoutParams params = null;
@@ -1342,9 +1343,7 @@ public final class ViewRootImpl implements ViewParent, View.AttachInfo.Callbacks
 		boolean layoutRequested = mLayoutRequested && !mStopped;
 		if (layoutRequested)
 		{
-
 			final Resources res = mView.getContext().getResources();
-
 			if (mFirst)
 			{
 				// make sure touch mode code executes by setting cached value
