@@ -675,7 +675,6 @@ public class AlertController
 
 	private void setBackground(LinearLayout topPanel, LinearLayout contentPanel, View customPanel, boolean hasButtons, TypedArray a, boolean hasTitle, View buttonPanel)
 	{
-
 		/* Get all the different background required */
 		int fullDark = a.getResourceId(R.styleable.AlertDialog_fullDark, R.drawable.popup_full_dark);
 		int topDark = a.getResourceId(R.styleable.AlertDialog_topDark, R.drawable.popup_top_dark);

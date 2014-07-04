@@ -16,8 +16,6 @@
 
 package android.app;
 
-import com.android.internal.app.AlertController;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -27,13 +25,14 @@ import android.os.Message;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.android.internal.app.AlertController;
 
 /**
  * A subclass of Dialog that can display one, two or three buttons. If you only want to
