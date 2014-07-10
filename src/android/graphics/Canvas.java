@@ -24,6 +24,8 @@ import android.text.TextUtils;
 import javax.microedition.khronos.opengles.GL;
 
 /**
+ * 画布类是具有绘制功能的一个类。 想要在画布上绘制一些东西，你需要有4个最基本的组件 ： 一个有大小的Bitmap
+ * 一个画布， 一个画笔和一个绘制过程的信息
  * The Canvas class holds the "draw" calls. To draw something, you need
  * 4 basic components: A Bitmap to hold the pixels, a Canvas to host
  * the draw calls (writing into the bitmap), a drawing primitive (e.g. Rect,

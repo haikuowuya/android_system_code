@@ -3397,7 +3397,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 		{
 			setScrollContainer(true);
 		}
-
+		//TODO 判断View是否是不透明
 		computeOpaqueFlags();
 	}
 
@@ -10935,6 +10935,9 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	 */
 	protected void computeOpaqueFlags()
 	{
+		/***
+		 * 不透明条件 ：有背景、背景是不透明的、没有滚动条或者滚动条在view里面
+		 */
 		// Opaque if:
 		// - Has a background
 		// - Background is opaque
