@@ -10945,11 +10945,11 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 
 		if (mBackground != null && mBackground.getOpacity() == PixelFormat.OPAQUE)
 		{
-			mPrivateFlags |= PFLAG_OPAQUE_BACKGROUND;
+			mPrivateFlags |= PFLAG_OPAQUE_BACKGROUND;//mPrivateFlags = PFLAG_OPAQUE_BACKGROUND
 		}
 		else
 		{
-			mPrivateFlags &= ~PFLAG_OPAQUE_BACKGROUND;
+			mPrivateFlags &= ~PFLAG_OPAQUE_BACKGROUND;// mPrivateFlags = 0;
 		}
 
 		final int flags = mViewFlags;
@@ -14491,7 +14491,7 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
 	 * @param canvas
 	 *            The Canvas to which the View is rendered.
 	 */
-	public void draw(Canvas canvas)
+	public void draw(Canvas canvas)//TODO draw()
 	{
 		final int privateFlags = mPrivateFlags;
 		final boolean dirtyOpaque = (privateFlags & PFLAG_DIRTY_MASK) == PFLAG_DIRTY_OPAQUE && (mAttachInfo == null || !mAttachInfo.mIgnoreDirtyState);
