@@ -66,6 +66,7 @@ public class ContextWrapper extends Context {
      */
     protected void attachBaseContext(Context base) {
         if (mBase != null) {
+        	
             throw new IllegalStateException("Base context already set");
         }
         mBase = base;
