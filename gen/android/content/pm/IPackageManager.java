@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\android_workspace\\system_code\\src\\android\\content\\pm\\IPackageManager.aidl
+ * Original file: E:\\android_workspace2\\system_code\\src\\android\\content\\pm\\IPackageManager.aidl
  */
 package android.content.pm;
 /**

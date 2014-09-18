@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\android_workspace\\system_code\\src\\android\\service\\dreams\\IDreamService.aidl
+ * Original file: E:\\android_workspace2\\system_code\\src\\android\\service\\dreams\\IDreamService.aidl
  */
 package android.service.dreams;
 /**
