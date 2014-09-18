@@ -201,6 +201,7 @@ public class MenuBuilder implements Menu {
     
     public MenuBuilder setDefaultShowAsAction(int defaultShowAsAction) {
         mDefaultShowAsAction = defaultShowAsAction;
+        
         return this;
     }
 
